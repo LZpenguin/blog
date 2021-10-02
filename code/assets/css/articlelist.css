@@ -3,6 +3,7 @@ body {
   cursor: url("../images/cursor.png"), default;
 }
 .header {
+  z-index: 999;
   position: fixed;
   top: 0;
   left: 0;
@@ -191,6 +192,88 @@ body {
   font-weight: 600;
 }
 .main .list .post-list .post-list-posts .postcard {
+  z-index: 0;
+  position: relative;
+  overflow: visible;
+}
+.main .list .post-list .post-list-posts .postcard:hover .con {
+  background-color: #1f1f1f;
+}
+.main .list .post-list .post-list-posts .postcard:hover .postTitle {
+  filter: grayscale(0.7) contrast(1.3);
+  color: #fff;
+  position: relative;
+}
+.main .list .post-list .post-list-posts .postcard:hover .postTitle::before {
+  z-index: 1;
+  content: "纯小白也能看懂的前端 Tips";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: 2px;
+  text-shadow: -2px 0 #ff00c1;
+  clip: rect(0px, 999pxpx, 999px, 0px);
+  animation: anim1 1s infinite linear alternate-reverse;
+}
+@keyframes anim1 {
+  0% {
+    clip: rect(0, 999px, 2px, 0);
+  }
+  20% {
+    clip: rect(23px, 999px, 25px, 0);
+  }
+  40% {
+    clip: rect(0, 999px, 0, 0);
+  }
+  60% {
+    clip: rect(9px, 999px, 11px, 0);
+  }
+  80% {
+    clip: rect(0, 999px, 0, 0);
+  }
+  100% {
+    clip: rect(0, 999px, 0, 0);
+  }
+}
+@keyframes anim2 {
+  0% {
+    text-shadow: -2px 0 #00dffc, 2px 2px #ff00c1;
+  }
+  20% {
+    text-shadow: none;
+  }
+  40% {
+    text-shadow: none;
+  }
+  60% {
+    text-shadow: none;
+  }
+  80% {
+    text-shadow: -2px 0 #00dffc, 2px 2px #ff00c1;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+.main .list .post-list .post-list-posts .postcard:hover .postTitle::after {
+  content: "纯小白也能看懂的前端 Tips";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: -2px;
+  text-shadow: -2px 0 #00dffc, 2px 2px #ff00c1;
+  animation: anim2 1s infinite linear alternate-reverse;
+}
+.main .list .post-list .post-list-posts .postcard:hover .decoration div[class^="dec-"] {
+  background-color: #7bd2de;
+  animation-play-state: running;
+}
+.main .list .post-list .post-list-posts .postcard .con {
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 4rem 4rem;
   padding: 0.8rem;
@@ -198,13 +281,7 @@ body {
   background-color: #353536;
   cursor: url("../images/cursor-r.png"), default;
 }
-.main .list .post-list .post-list-posts .postcard:hover {
-  background-color: #1f1f1f;
-}
-.main .list .post-list .post-list-posts .postcard:hover .postTitle {
-  color: #fff;
-}
-.main .list .post-list .post-list-posts .postcard .postTitle {
+.main .list .post-list .post-list-posts .postcard .con .postTitle {
   grid-column: 1/3;
   grid-row: 1/2;
   color: #e7e7e7;
@@ -212,9 +289,9 @@ body {
   font-size: 1.5rem;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: visible;
 }
-.main .list .post-list .post-list-posts .postcard .postHot {
+.main .list .post-list .post-list-posts .postcard .con .postHot {
   grid-column: 3/4;
   grid-row: 1/2;
   display: flex;
@@ -222,11 +299,11 @@ body {
   justify-content: flex-end;
   color: #00dffc;
 }
-.main .list .post-list .post-list-posts .postcard .postHot img {
+.main .list .post-list .post-list-posts .postcard .con .postHot img {
   width: 1rem;
   margin-right: 0.3rem;
 }
-.main .list .post-list .post-list-posts .postcard .postDigest {
+.main .list .post-list .post-list-posts .postcard .con .postDigest {
   grid-column: 1/4;
   grid-row: 2/3;
   line-height: 1.4rem;
@@ -239,12 +316,12 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.main .list .post-list .post-list-posts .postcard .postTags {
+.main .list .post-list .post-list-posts .postcard .con .postTags {
   grid-column: 1/2;
   grid-row: 3/4;
   padding: 0.5rem 0 0.3rem;
 }
-.main .list .post-list .post-list-posts .postcard .postTags .postTag {
+.main .list .post-list .post-list-posts .postcard .con .postTags .postTag {
   padding: 0.04rem 0.5rem 0.16rem;
   margin-right: 0.2rem;
   border-radius: 999px;
@@ -252,12 +329,190 @@ body {
   color: #08ffea;
   font-size: 0.8rem;
 }
-.main .list .post-list .post-list-posts .postcard .postTime {
+.main .list .post-list .post-list-posts .postcard .con .postTags .postTag:hover {
+  background-color: #303e3e;
+}
+.main .list .post-list .post-list-posts .postcard .con .postTime {
   grid-column: 2/4;
   grid-row: 3/4;
   padding-top: 0.5rem;
   text-align: right;
   color: #606060;
+}
+.main .list .post-list .post-list-posts .postcard .decoration {
+  z-index: -1;
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  overflow: hidden;
+}
+.main .list .post-list .post-list-posts .postcard .decoration div[class^="dec-"] {
+  z-index: 1;
+  position: absolute;
+  top: -50px;
+  left: -240px;
+  width: 180%;
+  height: 160%;
+  background-color: #202022;
+  animation-play-state: paused;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-back {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+.main .list .post-list .post-list-posts .postcard .decoration .dec-a {
+  clip-path: polygon(97% 32%, 42% 72%, 0% 29%, 26% 72%);
+  animation-duration: 7s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+}
+.main .list .post-list .post-list-posts .postcard .decoration .dec-b {
+  clip-path: polygon(55% 5%, 45% 51%, 100% 60%, 24% 61%);
+  animation-duration: 11s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+}
+.main .list .post-list .post-list-posts .postcard .decoration .dec-c {
+  clip-path: polygon(83% 19%, 62% 85%, 8% 26%, 49% 79%);
+  animation-duration: 9s;
+  animation-name: rotate-back;
+  animation-iteration-count: infinite;
+}
+.main .list .post-list .pager {
+  display: flex;
+  justify-content: space-between;
+}
+.main .list .post-list .pager .btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 2.4rem;
+  padding: 0 1.2rem;
+  margin: 1rem;
+  border: 1px solid #00dffc;
+  color: #00dffc;
+  font-size: 1rem;
+  cursor: url("../images/cursor-r.png"), default;
+}
+.main .list .post-list .pager .btn:hover {
+  color: #202022;
+  background-color: #00dffc;
+}
+.main .list .post-list .pager .btn:hover::before {
+  border-top: 1px solid #202022;
+}
+.main .list .post-list .pager .btn:hover::after {
+  border-bottom: 1px solid #202022;
+}
+.main .list .post-list .pager .btn:hover .deco-a {
+  padding: 0.6rem;
+  border: 1px solid #00dffc;
+  transform: translate(-50%, -50%);
+}
+.main .list .post-list .pager .btn:hover .deco-a2 {
+  padding: 0.39rem;
+  border: 1px solid #202022;
+}
+.main .list .post-list .pager .btn:hover .deco-b {
+  background-color: #202022;
+  height: 0.3rem;
+}
+.main .list .post-list .pager .btn:hover .deco-b2 {
+  background-color: #00dffc;
+  height: 0.3rem;
+}
+.main .list .post-list .pager .btn:hover .deco-c {
+  border: 1px solid #00dffc;
+  border-left: 0;
+  width: 0.3rem;
+  transform: translateX(0.15rem);
+}
+.main .list .post-list .pager .btn:hover .deco-c2 {
+  border: 1px solid #202022;
+  border-right: 0;
+  width: 0.3rem;
+}
+.main .list .post-list .pager .btn .deco-a {
+  position: absolute;
+  top: 0.1rem;
+  left: 0.2rem;
+  transition: all 0.3s;
+}
+.main .list .post-list .pager .btn .deco-a2 {
+  position: absolute;
+  top: -0.18rem;
+  left: -0.06rem;
+  transition: all 0.3s;
+}
+.main .list .post-list .pager .btn .deco-b {
+  position: absolute;
+  bottom: 0;
+  right: 1rem;
+  width: 1.5rem;
+  height: 0;
+  transition: all 0.2s;
+}
+.main .list .post-list .pager .btn .deco-b2 {
+  position: absolute;
+  bottom: -0.3rem;
+  right: 1rem;
+  width: 1.5rem;
+  height: 0;
+  transition: all 0.2s;
+}
+.main .list .post-list .pager .btn .deco-c {
+  position: absolute;
+  right: -0.3rem;
+  bottom: 0.7rem;
+  width: 0;
+  height: 0.8rem;
+  transition: all 0.2s;
+}
+.main .list .post-list .pager .btn .deco-c2 {
+  position: absolute;
+  right: 0rem;
+  bottom: 0.7rem;
+  width: 0;
+  height: 0.8rem;
+  transition: all 0.2s;
+}
+.main .list .post-list .pager .btn::before {
+  position: absolute;
+  content: "";
+  top: 1px;
+  left: -3px;
+  width: 2rem;
+  height: 1rem;
+  border-top: 1px solid #00dffc;
+  border-left: 1px solid #00dffc;
+}
+.main .list .post-list .pager .btn::after {
+  z-index: 2;
+  position: absolute;
+  content: "";
+  bottom: 1px;
+  right: -3px;
+  width: 2rem;
+  height: 1rem;
+  border-bottom: 1px solid #00dffc;
+  border-right: 1px solid #00dffc;
+}
+.main .list .post-list .pager .space {
+  flex: 1 1;
 }
 .main .tags {
   flex-basis: 250px;
