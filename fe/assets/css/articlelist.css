@@ -240,19 +240,6 @@ body {
   position: relative;
   overflow: visible !important;
 }
-.main .list .post-list .post-list-posts .postcard:hover .postTitle::before {
-  z-index: 1;
-  content: "纯小白也能看懂的前端 Tips";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  left: 2px;
-  text-shadow: -2px 0 #ff00c1;
-  clip: rect(0px, 999pxpx, 999px, 0px);
-  animation: anim1 1s infinite linear alternate-reverse;
-}
 @keyframes anim1 {
   0% {
     clip: rect(0, 999px, 2px, 0);
@@ -293,8 +280,21 @@ body {
     text-shadow: none;
   }
 }
+.main .list .post-list .post-list-posts .postcard:hover .postTitle::before {
+  content: attr(data-title);
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: 2px;
+  text-shadow: -2px 0 #ff00c1;
+  clip: rect(0px, 999pxpx, 999px, 0px);
+  animation: anim1 1s infinite linear alternate-reverse;
+}
 .main .list .post-list .post-list-posts .postcard:hover .postTitle::after {
-  content: "纯小白也能看懂的前端 Tips";
+  content: attr(data-title);
   position: absolute;
   top: 0;
   left: 0;

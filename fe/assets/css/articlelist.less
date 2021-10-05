@@ -233,49 +233,49 @@ body {
                             color: #fff;
                             position: relative;
                             overflow: visible !important;
+                            @keyframes anim1 {
+                                0% {
+                                    clip: rect(0, 999px, 2px, 0);
+                                }
+                                20% {
+                                    clip: rect(23px, 999px, 25px, 0);
+                                }
+                                40% {
+                                    clip: rect(0, 999px, 0, 0);
+                                }
+                                60% {
+                                    clip: rect(9px, 999px, 11px, 0);
+                                }
+                                80% {
+                                    clip: rect(0, 999px, 0, 0);
+                                }
+                                100% {
+                                    clip: rect(0, 999px, 0, 0);
+                                }
+                            }
+                            @keyframes anim2 {
+                                0% {
+                                    text-shadow: -2px 0 #00dffc, 2px 2px #ff00c1;
+                                }
+                                20% {
+                                    text-shadow: none;
+                                }
+                                40% {
+                                    text-shadow: none;
+                                }
+                                60% {
+                                    text-shadow: none;
+                                }
+                                80% {
+                                    text-shadow: -2px 0 #00dffc, 2px 2px #ff00c1;
+                                }
+                                100% {
+                                    text-shadow: none;
+                                }
+                            }
                             &::before {
-                                @keyframes anim1 {
-                                    0% {
-                                        clip: rect(0, 999px, 2px, 0);
-                                    }
-                                    20% {
-                                        clip: rect(23px, 999px, 25px, 0);
-                                    }
-                                    40% {
-                                        clip: rect(0, 999px, 0, 0);
-                                    }
-                                    60% {
-                                        clip: rect(9px, 999px, 11px, 0);
-                                    }
-                                    80% {
-                                        clip: rect(0, 999px, 0, 0);
-                                    }
-                                    100% {
-                                        clip: rect(0, 999px, 0, 0);
-                                    }
-                                }
-                                @keyframes anim2 {
-                                    0% {
-                                        text-shadow: -2px 0 #00dffc, 2px 2px #ff00c1;
-                                    }
-                                    20% {
-                                        text-shadow: none;
-                                    }
-                                    40% {
-                                        text-shadow: none;
-                                    }
-                                    60% {
-                                        text-shadow: none;
-                                    }
-                                    80% {
-                                        text-shadow: -2px 0 #00dffc, 2px 2px #ff00c1;
-                                    }
-                                    100% {
-                                        text-shadow: none;
-                                    }
-                                }
+                                content: attr(data-title);
                                 z-index: 1;
-                                content: "纯小白也能看懂的前端 Tips";
                                 position: absolute;
                                 top: 0;
                                 left: 0;
@@ -287,7 +287,7 @@ body {
                                 animation: anim1 1s infinite linear alternate-reverse;
                             }
                             &::after {
-                                content: "纯小白也能看懂的前端 Tips";
+                                content: attr(data-title);
                                 position: absolute;
                                 top: 0;
                                 left: 0;
