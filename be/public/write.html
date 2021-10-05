@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./stylesheets/common.css">
+  <link rel="stylesheet" href="./stylesheets/write.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="header">博客后台管理系统</div>
+  <div class="body">
+    <div class="aside">
+      <ul class="aside-list">
+        <a href="index.html"><li>首页</li></a>
+        <a href="articleList.html"><li>文章列表</li></a>
+        <a href="javascript:;"><li>写文章</li></a>
+      </ul>
+    </div>
+    <div class="main">
+      <form action="http://localhost:3000/posts" method="post">
+        <div class="group">
+          <label for="">标题</label>
+          <input type="text" placeholder="请输入文章标题" name="title" id="title">
+        </div>
+        <div class="group">
+          <label for="">作者</label>
+          <input type="text" placeholder="请输入文章作者" name="author" id="author">
+        </div>
+        <div class="group">
+          <label for="">内容</label>
+          <textarea placeholder="请输入文章内容" name="content" id="content"></textarea>
+        </div>
+        <div class="btns">
+          <button class="submit">提交</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script src="./javascripts/write.js"></script>
+</body>
+</html>

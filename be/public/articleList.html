@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./stylesheets/common.css">
+  <link rel="stylesheet" href="./stylesheets/articleList.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="header">博客后台管理系统</div>
+  <div class="body">
+    <div class="aside">
+      <ul class="aside-list">
+        <a href="index.html"><li>首页</li></a>
+        <a href="javascript:;"><li>文章列表</li></a>
+        <a href="write.html"><li>写文章</li></a>
+      </ul>
+    </div>
+    <div class="main">
+      <div class="list">
+        <table>
+          <thead>
+            <tr>
+              <th>文章名</th>
+              <th>文章ID</th>
+              <th>文章作者</th>
+              <th>时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+          </tbody>
+        </table>
+        <div class="pager">
+          <ul id="pageNumber">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+          <span id="next">下一页</span>
+          <span id="last">上一页</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script src="./render/template-web.js"></script>
+  <script type="text/html" id='template'>
+    {{each data}}
+    <tr>
+      <td>{{$value.title}}</td>
+      <td>{{$value._id}}</td>
+      <td>{{$value.author}}</td>
+      <td>{{$value.date}}</td>
+      <td>
+        <button data-id={{$value._id}} class="update">修改</button>
+        <button data-id={{$value._id}} class="delete">删除</button>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+  <script src="./javascripts/articleList.js"></script>
+</body>
+</html>

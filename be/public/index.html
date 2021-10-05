@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./stylesheets/common.css">
+  <title>Document</title>
+  <style>
+    .block {
+      box-sizing: border-box;
+      width: calc(100% - 60px);
+      height: calc(100% - 40px);
+      padding: 20px;
+      margin: 20px 30px;
+      border-radius: 20px;
+      background-color: #fff;
+      overflow: hidden;
+    }
+    .title {
+      width: 100%;
+      padding: 10px 40px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .postNumber {
+      width: 100%;
+      padding: 10px 40px;
+      font-size: 20px;
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">博客后台管理系统</div>
+  <div class="body">
+    <div class="aside">
+      <ul class="aside-list">
+        <a href="javascript:;"><li>首页</li></a>
+        <a href="articleList.html"><li>文章列表</li></a>
+        <a href="write.html"><li>写文章</li></a>
+      </ul>
+    </div>
+    <div class="main">
+      <div class="block">
+        <div class="title">首页</div>
+        <div class="postNumber">文章数: 5</div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script src="./render/template-web.js"></script>
+  <script type="text/html" id='template'>
+    文章数: {{data.length}}
+  </script>
+  <script>
+    var postNumber = document.querySelector('.postNumber');
+    $.ajax({
+      type: 'get',
+      url: 'http://localhost:3000/posts',
+      success: function(rel) {
+        var num = template('template',rel);
+        postNumber.innerHTML = num;
+      }
+    })
+  </script>
+</body>
+</html>
