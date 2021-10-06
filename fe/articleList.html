@@ -100,6 +100,9 @@
           </div>
         </div>
       </div>
+      <div class="detail">
+        
+      </div>
       <div class="tags">
         <span class="tag">Linux 5</span>
         <span class="tag">读书笔记 26</span>
@@ -344,9 +347,9 @@
   <script src="./render/template-web.js"></script>
   <script type="text/html" id="template">
     {{each data}}
-    <div class="postcard">
+    <div class="postcard" id="{{$value._id}}">
       <div class="con">
-        <span class="postTitle" id="{{$value._id}}" data-title="{{$value.title}}">{{$value.title}}</span>
+        <span class="postTitle" data-title="{{$value.title}}">{{$value.title}}</span>
         <span class="postHot">
           <img src="./assets/images/hot.35135986.svg" alt="">
            96
@@ -365,6 +368,25 @@
       </div>
     </div>
     {{/each}}
+  </script>
+  <script type="text/html" id="template2">
+    <div class="detail-header">
+      <div class="detail-header-title">{{title}}</div>
+      <div class="detail-header-hot">
+        <img src="./assets/images/hot.35135986.svg" alt="">
+        96
+      </div>
+      <div class="detail-header-tags">
+        <span class="detail-header-tag">前端杂记</span>
+        <span class="detail-header-tag">指北</span>    
+      </div>
+      <div class="detail-header-date">
+        {{date}}
+      </div>
+    </div>
+    <div class="detail-main">
+      {{content}}
+    </div>
   </script>
   <script src="./assets/js/articleList.js"></script>
 </body>

@@ -9,7 +9,7 @@ router.post('/',async (ctx) => {
   let post = {
     title: title,
     author: author,
-    date: new Date().getFullYear() +'.'+ new Date().getMonth() +'.'+ new Date().getDate() +'-'+ new Date().getHours() + ':' +new Date().getMinutes(),
+    date: new Date().getFullYear() +'/'+ new Date().getMonth() +'/'+ new Date().getDate() +' '+ new Date().getHours() + ':' +new Date().getMinutes(),
     content: content
   }
   await Post.create(post).then((rel) => {
@@ -78,10 +78,16 @@ router.delete('/:id',async (ctx) => {
 
 //查询所有文章
 router.get('/',async (ctx) => {
-  let data = await Post.find();
+  var {key} = ctx.query;
+  var data = null;
+  if(key) {
+    data = await Post.find({title:eval("/"+key+"/i")})
+  }else {
+    data = await Post.find();
+  }
   ctx.body = {
     code: 200,
-    data: data
+    data: data,
   }
 })
 

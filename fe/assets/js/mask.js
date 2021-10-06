@@ -35,7 +35,16 @@ window.onload = function() {
         })
       },0)
       setTimeout(() => {
-        mask.style.visibility = 'hidden';
+        maskn.forEach((item) => {
+          item.style.top = '-'+ height + 'px';
+          if(width>420) {
+            item.style.width = '4rem';
+            item.style.height = '4rem';
+          }else {
+            item.style.width = '2rem';
+            item.style.height = '2rem';
+          }
+        })
       },800)
     }
   }
@@ -65,7 +74,16 @@ window.onload = function() {
         })
       },0)
       setTimeout(() => {
-        mask.style.visibility = 'hidden';
+        maskn.forEach((item) => {
+          item.style.top = '-'+ height + 'px';
+          if(width>420) {
+            item.style.width = '4rem';
+            item.style.height = '4rem';
+          }else {
+            item.style.width = '2rem';
+            item.style.height = '2rem';
+          }
+        })
       },800)
     }
   }
@@ -95,7 +113,16 @@ window.onload = function() {
         })
       },0)
       setTimeout(() => {
-        mask.style.visibility = 'hidden';
+        maskn.forEach((item) => {
+          item.style.top = '-'+ height + 'px';
+          if(width>420) {
+            item.style.width = '4rem';
+            item.style.height = '4rem';
+          }else {
+            item.style.width = '2rem';
+            item.style.height = '2rem';
+          }
+        })
       },800)
     }
   }
