@@ -1,8 +1,14 @@
 var form = document.querySelector('form')
 var title = document.querySelector('#title');
 var author = document.querySelector('#author');
+var tags = document.querySelectorAll('input[type="checkbox"]');
 var content = document.querySelector('#content');
-var id = window.location.search.substring(1).split('=')[1]
+var search = window.location.search;
+if(search) {
+  var id = search.substring(1).split('&')[1].split('=')[1];
+  var pageNo = search.substring(1).split('&')[0].split('=')[1];
+}
+
 var getPost = async function() {
   var data = await $.ajax({
     type: 'get',
@@ -12,6 +18,13 @@ var getPost = async function() {
       title.value = rel.data.title;
       author.value = rel.data.author;
       content.value = rel.data.content;
+      for(var i in rel.data.tags) {
+        for(var j in tags) {
+          if(rel.data.tags[i] === tags[j].value) {
+            tags[j].setAttribute('checked','true')
+          }
+        }
+      }
     }
   })
   return data;
@@ -30,8 +43,7 @@ form.onsubmit = function() {
       data: data,
       success: function(data) {
         console.log(data);
-        alert('更新成功！');
-        window.location.href = 'articleList.html';
+        window.location.href = 'articleList.html?page='+pageNo;
       }
     })
   }else {
@@ -41,8 +53,7 @@ form.onsubmit = function() {
       data: data,
       success: function(data) {
         console.log(data);
-        alert('提交成功！')
-        window.location.href = 'articleList.html';
+        window.location.href = 'articleList.html?page=1';
       }
     })
   } 

@@ -13,9 +13,18 @@ const postschema = new mongoose.Schema({
     type: String,
     required: true
   },
+  tags: {
+    type: [String],
+    required: false
+  },
   content: {
     type: String,
     required: true
+  },
+  visited: {
+    type: Number,
+    required: false,
+    default: 0
   }
 })
 

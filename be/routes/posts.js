@@ -4,12 +4,13 @@ router.prefix('/posts')
 
 //添加文章
 router.post('/',async (ctx) => {
-  let {title,author,content} = ctx.request.body;
+  let {title,author,tags,content} = ctx.request.body;
   console.log(ctx.request.body)
   let post = {
     title: title,
     author: author,
     date: new Date().getFullYear() +'/'+ new Date().getMonth() +'/'+ new Date().getDate() +' '+ new Date().getHours() + ':' +new Date().getMinutes(),
+    tags: tags,
     content: content
   }
   await Post.create(post).then((rel) => {
@@ -37,10 +38,11 @@ router.post('/',async (ctx) => {
 //修改文章
 router.put('/:id',async (ctx) => {
   let id = ctx.params.id;
-  let {title,author,content} = ctx.request.body;
+  let {title,author,tags,content} = ctx.request.body;
   await Post.findByIdAndUpdate({_id:id},{
     title: title,
     author: author,
+    tags: tags,
     content: content
   }).then(rel => {
     ctx.body = {
@@ -96,7 +98,8 @@ router.get('/',async (ctx) => {
       data: data,
       pageNo: pageNo,
       pageSize: pageSize,
-      pageTotal: Math.ceil(total/pageSize)
+      pageTotal: Math.ceil(total/pageSize),
+      posts: total
     }
   }
 })
@@ -105,6 +108,9 @@ router.get('/',async (ctx) => {
 router.get('/:id',async (ctx) => {
   let id = ctx.params.id;
   let post = await Post.findOne({_id: id});
+  await Post.findByIdAndUpdate({_id:id},{
+    visited: post.visited + 1
+  })
   ctx.body = {
     code: 200,
     data: post

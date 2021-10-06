@@ -28,9 +28,9 @@ tr:hover {
 }
 #pageNumber {
     float: left;
-    display: inline-block;
 }
 #pageNumber li {
+    cursor: pointer;
     display: inline-block;
     padding: 2px 8px;
     color: rgb(119, 119, 119);
@@ -38,9 +38,15 @@ tr:hover {
 }
 #last,
 #next {
+    cursor: pointer;
     float: right;
     padding: 2px 8px;
     color: rgb(46, 46, 46);
     background-color: #eee;
     margin-left: 10px;
+}
+#last:hover,
+#next:hover {
+    color: #fff;
+    background-color: #ccc;
 }

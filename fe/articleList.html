@@ -352,12 +352,13 @@
         <span class="postTitle" data-title="{{$value.title}}">{{$value.title}}</span>
         <span class="postHot">
           <img src="./assets/images/hot.35135986.svg" alt="">
-           96
+           {{$value.visited}}
         </span>
         <span class="postDigest">{{$value.content.substring(0,200)}} </span>
         <span class="postTags">
-          <span class="postTag">前端杂记</span>
-          <span class="postTag">指北</span>
+          {{each $value.tags}}
+          <span class="postTag">{{$value}}</span>
+          {{/each}}
         </span>
         <span class="postTime">{{$value.date}}</span>
       </div>
@@ -374,11 +375,12 @@
       <div class="detail-header-title">{{title}}</div>
       <div class="detail-header-hot">
         <img src="./assets/images/hot.35135986.svg" alt="">
-        96
+        {{visited}}
       </div>
       <div class="detail-header-tags">
-        <span class="detail-header-tag">前端杂记</span>
-        <span class="detail-header-tag">指北</span>    
+        {{each tags}}
+        <span class="detail-header-tag">{{$value}}</span>
+        {{/each}}
       </div>
       <div class="detail-header-date">
         {{date}}

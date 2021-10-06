@@ -18,6 +18,10 @@ input {
     height: 24px;
     padding: 2px;
 }
+input[type="checkbox"] {
+    margin-top: 4px;
+    height: 16px;
+}
 textarea {
     flex: 1;
     height: 300px;
