@@ -3,6 +3,7 @@ var centerBlock = document.querySelector('.list');
 var detailBlock = document.querySelector('.detail');
 var searchCon = document.querySelector('.search input');
 var searchBtn = document.querySelector('.search img');
+var posts = document.querySelector('#posts');
 var mask = document.querySelector('.mask');
 var maskn = document.querySelectorAll('.maskn');
 var pageNo = document.querySelector('#pageNo');
@@ -144,5 +145,13 @@ searchCon.addEventListener('keyup',function(e) {
   if(e.keyCode === 13) {
     searchBtn.click();
   }
+})
+
+//文章列表页面跳转
+posts.addEventListener('click',function(e) {
+  console.log(111);
+  setTimeout(() => {
+    window.location.hash = '#'
+  },500)
 })
 

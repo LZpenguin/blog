@@ -59,3 +59,16 @@ body {
 .aside-list li:hover {
     background-color: #44494e;
 }
+@media screen and (max-width: 450px) {
+    .aside {
+        width: 50px;
+    }
+    .main {
+        margin-left: 50px;
+        width: calc(100% - 50px);
+    }
+    .aside-list li {
+        height: 80px;
+        line-height: 40px;
+    }
+}
