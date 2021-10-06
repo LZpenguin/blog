@@ -151,7 +151,6 @@ searchCon.addEventListener('keyup',function(e) {
 
 //文章列表页面跳转
 posts.addEventListener('click',function(e) {
-  console.log(111);
   setTimeout(() => {
     window.location.hash = '#'
   },500)
