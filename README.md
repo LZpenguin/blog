@@ -3,7 +3,7 @@
 ```
 ├── be                          # 后端代码
 │   └── bin                  	# www 
-│       ├── db             		# 连接数据库 
+│       ├── db                	# 连接数据库
 │       ├── model              	# Mongoose 
 │       ├── public              # 静态资源 
 │       ├── routes              # 后端路由
