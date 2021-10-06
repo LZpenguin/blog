@@ -5,19 +5,52 @@ var searchCon = document.querySelector('.search input');
 var searchBtn = document.querySelector('.search img');
 var mask = document.querySelector('.mask');
 var maskn = document.querySelectorAll('.maskn');
+var pageNo = document.querySelector('#pageNo');
+var last = document.querySelector('#last');
+var next = document.querySelector('#next');
 
 //获取文章
-$.ajax({
-  type: 'get',
-  url: 'http://localhost:3000/posts',
-  success: function(rel) {
-    console.log(rel);
-    var cards = template('template',rel);
-    list.innerHTML = '';
-    list.innerHTML = cards;
+var getPost = async function() {
+  $.ajax({
+    type: 'get',
+    url: 'http://localhost:3000/posts?pageNo='+pageNo.getAttribute('data-no'),
+    success: function(rel) {
+      console.log(rel);
+      var cards = template('template',rel);
+      list.innerHTML = '';
+      list.innerHTML = cards;
+      pageNo.setAttribute('data-total',rel.pageTotal);
+    }
+  })
+}
+getPost();
+
+//分页按钮
+last.addEventListener('click',async (e) => {
+  var page = pageNo.getAttribute('data-no');
+  if(page>1) {
+    page -= 1;
+    pageNo.setAttribute('data-no',page);
+    setTimeout(async () => {
+      await getPost();
+      pageNo.children[0].innerHTML = '第'+page+'页';
+    },500);
+  }
+})
+next.addEventListener('click',async () => {
+  var page = pageNo.getAttribute('data-no');
+  var pageTotal = pageNo.getAttribute('data-total');
+  if(page<pageTotal) {
+    page = page - 0 + 1;
+    pageNo.setAttribute('data-no',page);
+    setTimeout(async () => {
+      await getPost();
+      pageNo.children[0].innerHTML = '第'+page+'页';
+    },500);
   }
 })
 
+//刷新仍是原页面
 var hash = window.location.hash;
 window.location.hash = '';
 window.location.hash = hash;
@@ -112,3 +145,4 @@ searchCon.addEventListener('keyup',function(e) {
     searchBtn.click();
   }
 })
+

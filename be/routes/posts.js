@@ -78,16 +78,26 @@ router.delete('/:id',async (ctx) => {
 
 //查询所有文章
 router.get('/',async (ctx) => {
-  var {key} = ctx.query;
+  var pageSize = 10;
+  var {key,pageNo} = ctx.query;
   var data = null;
+  var total = null;
   if(key) {
     data = await Post.find({title:eval("/"+key+"/i")})
+    ctx.body = {
+      code: 200,
+      data: data
+    }
   }else {
-    data = await Post.find();
-  }
-  ctx.body = {
-    code: 200,
-    data: data,
+    data = await Post.find().skip((pageNo-1)*pageSize).limit(pageSize).exec();
+    total = await Post.count();
+    ctx.body = {
+      code: 200,
+      data: data,
+      pageNo: pageNo,
+      pageSize: pageSize,
+      pageTotal: Math.ceil(total/pageSize)
+    }
   }
 })
 
