@@ -71,7 +71,7 @@ $('.post-list-posts').on('click','.postcard',function(e) {
   },0)
   setTimeout(() => {
     if(e.target.className === 'postTag') {
-
+      
     }else {
       var node = e.target;
       while(node.className!=='postcard') {
@@ -106,7 +106,6 @@ searchBtn.onclick = function() {
     }
   })
 }
-
 searchCon.addEventListener('keyup',function(e) {
   e.preventDefault();
   if(e.keyCode === 13) {
