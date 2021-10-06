@@ -1,9 +1,9 @@
 body {
     background-color: #202022;
-    cursor: url("../images/cursor.png"), default;
+    cursor: none;
 }
 a {
-    cursor: url("../images/cursor-r.png"), default;
+    cursor: none;
 }
 .header {
     z-index: 999;
@@ -53,7 +53,7 @@ a {
                 color: #fff;
                 background-color: transparent;
                 font-size: 1rem;
-                cursor: url("../images/cursor.png"), default;
+                cursor: none;
             }
             .search-icon {
                 width: 1.5rem;
@@ -144,7 +144,7 @@ a {
             border: 1px solid #00dffc;
             color: #00dffc;
             font-size: 1rem;
-            cursor: url("../images/cursor-r.png"), default;
+            cursor: none;
             .deco-a {
                 position: absolute;
                 top: 0.1rem;
@@ -375,7 +375,6 @@ a {
                         padding: 0.8rem;
                         margin: 0.5rem 0;
                         background-color: #353536;
-                        cursor: url("../images/cursor-r.png"), default;
                         .postTitle {
                             grid-column: 1/3;
                             grid-row: 1/2;
@@ -541,7 +540,7 @@ a {
                     border: 1px solid #00dffc;
                     color: #00dffc;
                     font-size: 1rem;
-                    cursor: url("../images/cursor-r.png"), default;
+                    cursor: none;
                     .deco-a {
                         position: absolute;
                         top: 0.1rem;
@@ -630,7 +629,7 @@ a {
             border-radius: 999px;
             border: 1px solid #08ffea;
             font-size: 1rem;
-            cursor: url("../images/cursor-r.png"), default;
+            cursor: none;
             &:hover {
                 background-color: #1c4140;
             }
@@ -679,4 +678,15 @@ a {
         left: 0;
         transition: all 1s;
     }
+}
+.cursor {
+    width: 100px;
+    height: 100px;
+    clip-path: polygon(0 0, 21px 20px, 12.7px 21px, 7px 28px);
+    background-color: #20bfda;
+    position: fixed;
+    transition: top 0.03s, left 0.03s, transform 0.3s, box-shadow 0.3s;
+    mix-blend-mode: difference;
+    transform-origin: 0 0;
+    z-index: 999;
 }

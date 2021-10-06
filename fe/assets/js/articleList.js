@@ -9,6 +9,8 @@ var maskn = document.querySelectorAll('.maskn');
 var pageNo = document.querySelector('#pageNo');
 var last = document.querySelector('#last');
 var next = document.querySelector('#next');
+var cursor = document.querySelector('.cursor');
+var body = document.querySelector('body');
 
 //获取文章
 var getPost = async function() {
@@ -104,7 +106,7 @@ $('.post-list-posts').on('click','.postcard',function(e) {
     
   },0)
   setTimeout(() => {
-    if(e.target.className === 'postTag') {
+    if(e.target.classList.contains('postTag')) {
       
     }else {
       var node = e.target;
@@ -154,4 +156,15 @@ posts.addEventListener('click',function(e) {
     window.location.hash = '#'
   },500)
 })
+
+//鼠标样式
+body.onmousemove = function(e) {
+  cursor.style.top = e.clientY + 'px';
+  cursor.style.left = e.clientX + 'px';
+  if(e.target.classList.contains('r')) {
+    cursor.style.transform = 'rotateY(180deg)';
+  }else {
+    cursor.style.transform = '';
+  }
+}
 
