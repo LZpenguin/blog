@@ -31,10 +31,13 @@ var getPost = async function() {
 }
 
 if(id) {
-  getPost();
+  getPost().then(()=> {
+    mdSwitch()
+  })
 }
 
 form.onsubmit = function() {
+  title.value = title.value.trim();
   var data = $('form').serialize();
   if(id) {
     $.ajax({
@@ -58,4 +61,11 @@ form.onsubmit = function() {
     })
   } 
   return false;
+}
+
+function mdSwitch() {
+  var mdValue = content.value;
+  var converter = new showdown.Converter();
+  var html = converter.makeHtml(mdValue);
+  document.getElementById("show-area").innerHTML = html;
 }

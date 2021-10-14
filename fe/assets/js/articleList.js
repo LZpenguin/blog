@@ -22,6 +22,13 @@ var getPost = async function() {
       var cards = template('template',rel);
       list.innerHTML = '';
       list.innerHTML = cards;
+      var digests = document.querySelectorAll('.postDigest');
+      digests.forEach(item => {
+        var converter = new showdown.Converter();
+        var html = converter.makeHtml(item.innerHTML.trim());
+        var text =html.replace(/<(style|script|iframe)[^>]*?>[\s\S]+?<\/\1\s*>/gi,'').replace(/<[^>]+?>/g,'').replace(/\s+/g,' ').replace(/ /g,' ').replace(/>/g,' ');
+        item.innerHTML = text;
+      })
       pageNo.setAttribute('data-total',rel.pageTotal);
     }
   })
@@ -73,6 +80,10 @@ window.onhashchange = async function() {
     detailBlock.style.display = 'block';
     var detail = template("template2",data.data);
     detailBlock.innerHTML = detail;
+    var detailMain = document.querySelector(".detail-main");
+    var converter = new showdown.Converter();
+    var html = converter.makeHtml(detailMain.innerHTML.trim());
+    detailMain.innerHTML = html;
   }else {
     centerBlock.style.display = 'block';
     detailBlock.style.display = 'none';

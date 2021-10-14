@@ -7,7 +7,7 @@ router.post('/',async (ctx) => {
   let {title,author,tags,content} = ctx.request.body;
   console.log(ctx.request.body)
   let post = {
-    title: title,
+    title: title.trim(),
     author: author,
     date: new Date().getFullYear() +'/'+ new Date().getMonth() +'/'+ new Date().getDate() +' '+ new Date().getHours() + ':' +new Date().getMinutes(),
     tags: tags,
